@@ -1,0 +1,8 @@
+---
+registry_user: '#registry_user#'
+registry_pass: '#registry_pass#'
+registry_email: '#registry_email#'
+registry_list:
+  - {id: 1, image: 'nginx'}
+  - {id: 2, image: 'busybox'}
+

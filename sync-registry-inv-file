@@ -1,0 +1,5 @@
+[node]
+cluster-admin id=1
+cluster-node1 id=2
+cluster-node2 id=3
+cluster-node3 id=4

@@ -1,0 +1,12 @@
+---
+- hosts: 'node'
+  vars_files:
+    - sync-registry-list-var.yaml
+  tasks:
+    - name: 'docker login'
+      shell: docker login -u "{{registry_user}}" -p "{{registry_pass}}" -e "{{registry_email}}" registry.dataos.io
+
+    - name: 'test2'
+      shell: docker pull {{item.image}} &&  docker tag -f {{item.image}} registry.dataos.io/library/{{item.image}} && docker push registry.dataos.io/library/{{item.image}}
+      with_items: "{{ registry_list }}"
+      when: hostvars['{{inventory_hostname}}']['id' ] == (item.id % (groups.node | length ) + 1)
